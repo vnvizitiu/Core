@@ -8,21 +8,29 @@ See the [documentation](docs/README.md).
 
 ## Releases
 
+[![NuGet](https://img.shields.io/nuget/v/Castle.Core.svg)](https://www.nuget.org/packages/Castle.Core/)
+
 See the [Releases](https://github.com/castleproject/Core/releases).
 
 ## License
 
-Castle Core is &copy; 2004-2016 Castle Project. It is free software, and may be redistributed under the terms of the [Apache 2.0](http://opensource.org/licenses/Apache-2.0) license.
+Castle Core is &copy; 2004-2017 Castle Project. It is free software, and may be redistributed under the terms of the [Apache 2.0](http://opensource.org/licenses/Apache-2.0) license.
+
+## Contributing
+
+Browse the [contributing section](https://github.com/castleproject/Home#its-community-driven) of our _Home_ repository to get involved.
 
 ## Building
+
+| Platform | Build Status |
+|----------|-------------:|
+| Windows  | [![Build status](https://ci.appveyor.com/api/projects/status/49a6i0ydiku56r5b/branch/master?svg=true)](https://ci.appveyor.com/project/castleproject/core/branch/master) |
+| Linux    | [![Build Status](https://travis-ci.org/castleproject/Core.svg?branch=master)](https://travis-ci.org/castleproject/Core/branches) |
 
 ### .NET Framework and .NET Core
 
 ```
-msbuild /p:Configuration=NET35-Release /t:RunAllTests buildscripts/Build.proj
-msbuild /p:Configuration=NET40-Release /t:RunAllTests buildscripts/Build.proj
-msbuild /p:Configuration=NET45-Release /t:RunAllTests buildscripts/Build.proj
-build.cmd NETCORE
+build.cmd
 ```
 
 ### Mono
@@ -33,7 +41,7 @@ releases used to work well, but are not supported.
 Check [our issue tracker](https://github.com/castleproject/Core/issues?utf8=%E2%9C%93&q=is%3Aissue%20is%3Aopen%20mono) for known Mono defects.
 
 ```
-xbuild /p:Configuration=NET45-Release /t:RunAllTests buildscripts/Build.proj
+./build.sh
 ```
 
 ### Conditional Compilation Symbols
@@ -43,7 +51,6 @@ The following conditional compilation symbols (vertical) are currently defined f
 Symbol                              | NET35              | NET40              | NET45              | .NET Core
 ----------------------------------- | ------------------ | ------------------ | ------------------ | ------------------
 `FEATURE_APPDOMAIN`                 | :white_check_mark: | :white_check_mark: | :white_check_mark: | :no_entry_sign:
-`FEATURE_APTCA`                     | :no_entry_sign:    | :no_entry_sign:    | :no_entry_sign:    | :no_entry_sign:
 `FEATURE_ASSEMBLYBUILDER_SAVE`      | :white_check_mark: | :white_check_mark: | :white_check_mark: | :no_entry_sign:
 `FEATURE_BINDINGLIST`               | :white_check_mark: | :white_check_mark: | :white_check_mark: | :no_entry_sign:
 `FEATURE_DICTIONARYADAPTER_XML`     | :white_check_mark: | :white_check_mark: | :white_check_mark: | :no_entry_sign:
@@ -70,7 +77,6 @@ Symbol                              | NET35              | NET40              | 
 `DOTNET45`                          | :no_entry_sign:    | :no_entry_sign:    | :white_check_mark: | :no_entry_sign:
 
 * `FEATURE_APPDOMAIN` - enables support for features that make use of an AppDomain in the host.
-* `FEATURE_APTCA` - marks the assembly with the AllowPartiallyTrustedCallersAttribute.
 * `FEATURE_ASSEMBLYBUILDER_SAVE` - enabled support for saving the dynamically generated proxy assembly.
 * `FEATURE_BINDINGLIST` - enables support features that make use of System.ComponentModel.BindingList.
 * `FEATURE_DICTIONARYADAPTER_XML` - enable DictionaryAdapter Xml features.

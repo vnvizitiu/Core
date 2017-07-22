@@ -1,4 +1,4 @@
-﻿// Copyright 2004-2016 Castle Project - http://www.castleproject.org/
+﻿// Copyright 2004-2017 Castle Project - http://www.castleproject.org/
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -12,13 +12,26 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-using System;
-using System.Runtime.InteropServices;
-using System.Security;
+namespace Castle.DynamicProxy.Contributors
+{
+	using System;
+	using System.Collections.Generic;
 
-[assembly: ComVisible(false)]
-[assembly: CLSCompliant(true)]
+	public class FieldReferenceComparer : IComparer<Type>
+	{
+		public int Compare(Type x, Type y)
+		{
+			if (x == null)
+			{
+				throw new ArgumentNullException(nameof(x));
+			}
 
-#if FEATURE_SECURITY_PERMISSIONS && DOTNET40
-[assembly: SecurityRules(SecurityRuleSet.Level2)]
-#endif
+			if (y == null)
+			{
+				throw new ArgumentNullException(nameof(y));
+			}
+
+			return String.CompareOrdinal(x.FullName, y.FullName);
+		}
+	}
+}
